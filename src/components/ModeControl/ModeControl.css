@@ -1,0 +1,27 @@
+.modes {
+  display: flex;
+  background-color: var(--timer-bg);
+  padding: 1rem;
+  border-radius: 10rem;
+  background: linear-gradient(315deg, #2e325a, #0e112a);
+  box-shadow: -1rem -1rem 2rem #272c5a, 1rem 1rem 2rem #121530;
+}
+
+.mode:not(:last-child) {
+  margin-right: 2rem;
+}
+
+.mode__label {
+  cursor: pointer;
+  display: block;
+  font-size: 1.4rem;
+  color: rgba(215, 224, 255, 0.4);
+  padding: 1rem 2rem;
+  border-radius: 10rem;
+  font-weight: 700;
+}
+
+.mode__input:checked + .mode__label {
+  background-color: var(--accent-color);
+  color: rgb(22, 25, 50);
+}

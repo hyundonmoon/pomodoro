@@ -1,13 +1,56 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root {
+  --body-bg: rgb(30, 33, 63);
+  --timer-bg: rgb(22, 25, 50);
+  --navy: rgb(81, 84, 111);
+  --text: rgb(215, 224, 255);
+  --muted-text: rgba(215, 224, 255, 0.7);
+  --accent-color: #70f3f8;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  font-family: 'Kumbh Sans', sans-serif;
+  transition: all 500ms ease-in;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--body-bg);
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+#root {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button {
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: transparent;
+  cursor: pointer;
+}
+
+/* utility classes */
+
+.hidden {
+  display: none;
 }

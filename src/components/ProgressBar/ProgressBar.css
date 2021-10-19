@@ -1,0 +1,22 @@
+.progress-bar {
+  transform: rotate(-90deg);
+}
+
+.progress-bar__path,
+.progress-bar__bar {
+  fill: none;
+  height: 100%;
+  width: 100%;
+}
+
+.progress-bar__path {
+  stroke-width: 6;
+  stroke: #0e112a;
+}
+
+.progress-bar__bar {
+  stroke: var(--accent-color);
+  stroke-width: 6;
+  stroke-linecap: round;
+  fill: rgba(14, 17, 42, 0.8);
+}

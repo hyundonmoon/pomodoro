@@ -1,0 +1,40 @@
+.pomodoro {
+  height: 85%;
+  max-height: 60rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.timer__progress-bar {
+  position: relative;
+  background: linear-gradient(315deg, #2e325a, #0e112a);
+  box-shadow: -1rem -1rem 2rem #272c5a, 1rem 1rem 2rem #121530;
+  border-radius: 50%;
+
+  width: 40rem;
+  height: 40rem;
+}
+
+.timer__elapsed-time {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #d7e0ff;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.button {
+  font-size: 5rem;
+  color: var(--muted-text);
+}

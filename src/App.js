@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
 
-function App() {
+import Pomodoro from './components/Pomodoro/Pomodoro';
+import Portal from './components/Portal';
+import Settings from './components/Settings/Settings';
+
+import { SettingsProvider } from './context/SettingsContext';
+
+const App = () => {
+  const [settingOpen, setSettingOpen] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <SettingsProvider>
+      <Pomodoro setSettingOpen={setSettingOpen} />
+      {settingOpen && (
+        <Portal>
+          <Settings setSettingOpen={setSettingOpen} />
+        </Portal>
+      )}
+    </SettingsProvider>
   );
-}
+};
 
 export default App;
