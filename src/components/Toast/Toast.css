@@ -1,0 +1,23 @@
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.toast {
+  cursor: pointer;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  color: var(--accent-color);
+  max-width: 40rem;
+  border-radius: 0.5rem;
+  animation: slideIn 300ms ease-out;
+  background-color: rgba(14, 17, 42, 0.8);
+  font-size: 2rem;
+  font-weight: 700;
+}

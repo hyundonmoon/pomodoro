@@ -39,7 +39,7 @@
 .settings__body {
   padding-right: 2.4rem;
   padding-left: 2.4rem;
-  padding-bottom: 2.4rem;
+  padding-bottom: 1.2rem;
 }
 
 .settings__section {
@@ -80,4 +80,20 @@
   max-width: 14rem;
   padding: 1rem 0.5rem 1rem 1.5rem;
   font-weight: 700;
+}
+
+.settings__reset {
+  margin: 0 auto;
+  font-size: 1.5rem;
+  font-weight: 700;
+  border-radius: 10rem;
+  background-color: var(--timer-bg);
+  color: #fff;
+  padding: 1rem 2rem;
+  margin-top: 2rem;
+}
+
+.settings__reset:hover,
+.settings__reset:active {
+  background-color: var(--body-bg);
 }

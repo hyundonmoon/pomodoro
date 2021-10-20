@@ -1,9 +1,16 @@
+import { useState, useEffect } from 'react';
 import useSettings from '../../hook/useSettings';
 
 import './ProgressBar.css';
 
-const ProgressBar = ({ offset }) => {
-  const { RADIUS, CIRCUMFERENCE } = useSettings();
+const ProgressBar = () => {
+  const [offsetAmount, setOffsetAmount] = useState(0);
+  const { RADIUS, CIRCUMFERENCE, targetSeconds, elapsedSeconds } =
+    useSettings();
+
+  useEffect(() => {
+    setOffsetAmount(CIRCUMFERENCE / targetSeconds);
+  }, [CIRCUMFERENCE, targetSeconds]);
 
   return (
     <svg viewBox='0 0 100 100' className='progress-bar'>
@@ -19,7 +26,7 @@ const ProgressBar = ({ offset }) => {
         cy='50%'
         className='progress-bar__bar'
         strokeDasharray={CIRCUMFERENCE}
-        strokeDashoffset={offset}
+        strokeDashoffset={offsetAmount * elapsedSeconds}
       ></circle>
     </svg>
   );

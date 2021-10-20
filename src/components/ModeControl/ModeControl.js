@@ -2,17 +2,19 @@ import useSettings from '../../hook/useSettings';
 
 import './ModeControl.css';
 
-const ModeControl = ({ resetElapsedTime, pauseTimer }) => {
+const ModeControl = () => {
   const {
     pomodoroMinutes,
     shortBreakMinutes,
     longBreakMinutes,
     setSelectedMode,
+    setPaused,
+    setElapsedSeconds,
   } = useSettings();
 
   const handleTimeChange = (e) => {
-    pauseTimer();
-    resetElapsedTime();
+    setPaused(true);
+    setElapsedSeconds(0);
     setSelectedMode(e.target.id);
   };
 

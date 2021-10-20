@@ -54,3 +54,12 @@ button {
 .hidden {
   display: none;
 }
+
+/* toast related */
+
+.toast__container {
+  position: fixed;
+  right: 1.2rem;
+  top: 1.2rem;
+  z-index: 999;
+}

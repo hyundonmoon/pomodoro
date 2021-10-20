@@ -5,19 +5,25 @@ import Portal from './components/Portal';
 import Settings from './components/Settings/Settings';
 
 import { SettingsProvider } from './context/SettingsContext';
+import { ToastProvider } from './context/ToastContext';
 
 const App = () => {
   const [settingOpen, setSettingOpen] = useState(false);
 
   return (
-    <SettingsProvider>
-      <Pomodoro setSettingOpen={setSettingOpen} />
-      {settingOpen && (
-        <Portal>
-          <Settings setSettingOpen={setSettingOpen} />
-        </Portal>
-      )}
-    </SettingsProvider>
+    <ToastProvider>
+      <SettingsProvider>
+        <Pomodoro setSettingOpen={setSettingOpen} />
+        {settingOpen && (
+          <Portal>
+            <Settings
+              settingOpen={settingOpen}
+              setSettingOpen={setSettingOpen}
+            />
+          </Portal>
+        )}
+      </SettingsProvider>
+    </ToastProvider>
   );
 };
 
