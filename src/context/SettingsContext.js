@@ -29,6 +29,7 @@ export const SettingsProvider = ({ children }) => {
     if (paused && intervalId) {
       clearInterval(intervalId);
       setIntervalId(null);
+      document.title = 'Pomodoro Timer';
     } else if (elapsedSeconds > targetSeconds) {
       if (selectedMode === 'pomodoro') {
         addToast('Take a break!');
@@ -37,6 +38,15 @@ export const SettingsProvider = ({ children }) => {
       }
       setPaused(true);
       setElapsedSeconds(0);
+      document.title = 'Pomodoro Timer';
+    }
+
+    if (!paused && intervalId) {
+      document.title = `${Math.floor(
+        (targetSeconds - elapsedSeconds) / 60
+      )}: ${((targetSeconds - elapsedSeconds) % 60)
+        .toString()
+        .padStart(2, '0')} left`;
     }
   }, [
     paused,
@@ -47,12 +57,12 @@ export const SettingsProvider = ({ children }) => {
     selectedMode,
   ]);
 
-  console.log(intervalId);
-
   const RADIUS = 40;
   const CIRCUMFERENCE = 2 * Math.PI * RADIUS;
 
   const reset = () => {
+    setPaused(true);
+    setElapsedSeconds(0);
     setPomodoroMinutes(25);
     setShortBreakMinutes(5);
     setLongBreakMinutes(15);

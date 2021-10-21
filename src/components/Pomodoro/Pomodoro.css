@@ -1,13 +1,14 @@
 .pomodoro {
-  height: 85%;
-  max-height: 60rem;
+  height: 92%;
+  max-height: 550px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+  outline: none;
 }
 
-.timer__progress-bar {
+.timer {
   position: relative;
   background: linear-gradient(315deg, #2e325a, #0e112a);
   box-shadow: -1rem -1rem 2rem #272c5a, 1rem 1rem 2rem #121530;
@@ -15,12 +16,16 @@
 
   width: 35rem;
   height: 35rem;
+
+  cursor: pointer;
 }
 
-.timer__elapsed-time {
+.timer:active {
+  transform: scale(0.98);
+}
+
+.timer__contents {
   text-align: center;
-  font-size: 4rem;
-  font-weight: 700;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -28,13 +33,47 @@
   color: #d7e0ff;
 }
 
+.timer__time {
+  font-size: 4rem;
+  font-weight: 700;
+}
+
+.timer__text {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+
 .buttons {
   display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 2rem;
 }
 
 .button {
-  font-size: 5rem;
-  color: var(--muted-text);
+  width: 18rem;
+  padding: 1.5rem 5rem;
+  border: none;
+  color: #d7e0ff;
+  border-radius: 0.5rem;
+  font-size: 1.5rem;
+  font-weight: 900;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase;
+  text-align: center;
+  outline: none;
+  box-shadow: -0.6rem -0.6rem 1.2rem rgba(83, 85, 110, 0.5),
+    0.6rem 0.6rem 1.2rem rgba(0, 0, 0, 0.5);
+  transition: all 100ms ease-out;
+}
+
+.button:hover {
+  box-shadow: -0.3rem -0.3rem 0.6rem rgba(83, 85, 110, 0.25),
+    0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.25);
+}
+
+.button:active {
+  box-shadow: inset -0.3rem -0.3rem 0.6rem rgba(83, 85, 110, 0.25),
+    inset 0.3rem 0.3rem 0.6rem rgba(0, 0, 0, 0.25);
 }

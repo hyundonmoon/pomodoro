@@ -1,5 +1,5 @@
 import { useRef, useCallback, useEffect } from 'react';
-import './Settings.css';
+import './Modal.css';
 import useSettings from '../../hook/useSettings';
 
 const Settings = ({ settingOpen, setSettingOpen }) => {
@@ -11,11 +11,29 @@ const Settings = ({ settingOpen, setSettingOpen }) => {
     setPomodoroMinutes,
     setShortBreakMinutes,
     setLongBreakMinutes,
+    setPaused,
+    setElapsedSeconds,
     reset,
   } = useSettings();
 
+  const handleInputChange = useCallback(
+    (fn) => {
+      return (e) => {
+        setPaused(true);
+        setElapsedSeconds(0);
+        fn(e.target.value);
+      };
+    },
+    [setPaused, setElapsedSeconds]
+  );
+
   const closeSetting = () => {
     setSettingOpen(false);
+  };
+
+  const resetSetting = () => {
+    reset();
+    closeSetting();
   };
 
   const handleClickOutsideSetting = useCallback(
@@ -40,48 +58,48 @@ const Settings = ({ settingOpen, setSettingOpen }) => {
   }, [settingOpen, handleClickOutsideSetting]);
 
   return (
-    <div className='modal'>
-      <div className='settings' ref={settingsRef}>
-        <div className='settings__header'>
-          <h2 className='settings__heading'>Settings</h2>
-          <button className='settings__close' onClick={closeSetting}>
+    <div className='modal__background'>
+      <div className='modal' ref={settingsRef}>
+        <div className='modal__header'>
+          <h2 className='modal__heading'>Settings</h2>
+          <button className='modal__close' onClick={closeSetting}>
             x
           </button>
         </div>
-        <div className='settings__body'>
-          <div className='settings__section section__minutes'>
-            <h2 className='section__title'>time (minutes)</h2>
-            <div className='settings__option'>
-              <p className='settings__label'>pomodoro</p>
+        <div className='modal__body'>
+          <div className='body__section'>
+            <h2 className='section__title'>Time (minutes)</h2>
+            <div className='section__option'>
+              <p className='option__label'>pomodoro</p>
               <input
                 type='number'
                 min='15'
-                className='settings__input'
+                className='option__input'
                 value={pomodoroMinutes}
-                onChange={(e) => setPomodoroMinutes(e.target.value)}
+                onChange={handleInputChange(setPomodoroMinutes)}
               />
             </div>
-            <div className='settings__option'>
-              <p className='settings__label'>short break</p>
+            <div className='section__option'>
+              <p className='option__label'>short break</p>
               <input
                 type='number'
                 min='15'
-                className='settings__input'
+                className='option__input'
                 value={shortBreakMinutes}
-                onChange={(e) => setShortBreakMinutes(e.target.value)}
+                onChange={handleInputChange(setShortBreakMinutes)}
               />
             </div>
-            <div className='settings__option'>
-              <p className='settings__label'>long break</p>
+            <div className='section__option'>
+              <p className='option__label'>long break</p>
               <input
                 type='number'
                 min='15'
-                className='settings__input'
+                className='option__input'
                 value={longBreakMinutes}
-                onChange={(e) => setLongBreakMinutes(e.target.value)}
+                onChange={handleInputChange(setLongBreakMinutes)}
               />
             </div>
-            <button className='settings__reset' onClick={reset}>
+            <button className='option__reset' onClick={resetSetting}>
               reset
             </button>
           </div>

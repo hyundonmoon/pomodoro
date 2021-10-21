@@ -1,4 +1,4 @@
-.modal {
+.modal__background {
   position: fixed;
   top: 0;
   left: 0;
@@ -10,14 +10,14 @@
   align-items: center;
 }
 
-.settings {
+.modal {
   background-color: #fff;
   border-radius: 1.5rem;
-  min-width: 30rem;
-  max-width: calc(100%-2rem);
+  width: 400px;
+  max-width: calc(100% - 2rem);
 }
 
-.settings__header {
+.modal__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -25,64 +25,70 @@
   border-bottom: 1px solid #e3e1e1;
 }
 
-.settings__heading {
+.modal__heading {
   font-size: 2rem;
   font-weight: 700;
 }
 
-.settings__close {
+.modal__close {
   color: rgb(30, 33, 63, 0.4);
   font-size: 1.6rem;
   font-weight: 700;
 }
 
-.settings__body {
+.modal__body {
   padding-right: 2.4rem;
   padding-left: 2.4rem;
   padding-bottom: 1.2rem;
 }
 
-.settings__section {
+.body__section {
   padding-top: 2.4rem;
   padding-bottom: 2.4rem;
 }
 
-.settings__section:not(:last-child) {
+.body__section:not(:last-child) {
   border-bottom: 1px solid #e3e1e1;
 }
 
 .section__title {
-  text-align: center;
+  text-align: left;
+  font-size: 1.6rem;
   margin-bottom: 2rem;
-  text-transform: uppercase;
 }
 
-.settings__option {
+.section__paragraph {
+  text-align: justify;
+  font-size: 1.4rem;
+  line-height: 1.5;
+}
+
+.section__option {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   align-items: center;
 }
 
-.settings__option:not(:last-child) {
+.section__option:not(:last-child) {
   margin-bottom: 1rem;
 }
 
-.settings__label {
+.option__label {
   font-weight: 700;
   font-size: 1.3rem;
   color: rgba(30, 33, 63, 0.4);
 }
 
-.settings__input {
+.option__input {
   border: none;
   border-radius: 1rem;
   background-color: #eff1fa;
-  max-width: 14rem;
   padding: 1rem 0.5rem 1rem 1.5rem;
   font-weight: 700;
+  width: 100%;
 }
 
-.settings__reset {
+.option__reset {
   margin: 0 auto;
   font-size: 1.5rem;
   font-weight: 700;
@@ -91,9 +97,4 @@
   color: #fff;
   padding: 1rem 2rem;
   margin-top: 2rem;
-}
-
-.settings__reset:hover,
-.settings__reset:active {
-  background-color: var(--body-bg);
 }

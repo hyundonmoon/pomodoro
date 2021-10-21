@@ -12,14 +12,14 @@ const ModeControl = () => {
     setElapsedSeconds,
   } = useSettings();
 
-  const handleTimeChange = (e) => {
+  const handleModeChange = (e) => {
     setPaused(true);
     setElapsedSeconds(0);
     setSelectedMode(e.target.id);
   };
 
   return (
-    <form onChange={handleTimeChange} className='modes'>
+    <form onChange={handleModeChange} className='modes'>
       <div className='mode'>
         <input
           type='radio'

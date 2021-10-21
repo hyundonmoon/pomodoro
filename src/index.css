@@ -20,6 +20,18 @@ html {
   font-size: 62.5%; /* 1rem = 10px */
 }
 
+@media (max-width: 600px) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: 350px) {
+  html {
+    font-size: 45%;
+  }
+}
+
 body {
   height: 100vh;
   width: 100vw;
@@ -59,7 +71,7 @@ button {
 
 .toast__container {
   position: fixed;
-  right: 1.2rem;
-  top: 1.2rem;
+  right: 2rem;
+  top: 2rem;
   z-index: 999;
 }
