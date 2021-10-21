@@ -1,10 +1,14 @@
 .modes {
   display: flex;
-  background-color: var(--timer-bg);
   padding: 1rem;
   border-radius: 10rem;
-  background: linear-gradient(315deg, #2e325a, #0e112a);
-  box-shadow: -1rem -1rem 2rem #272c5a, 1rem 1rem 2rem #121530;
+  background: linear-gradient(
+    315deg,
+    var(--color-primary-1),
+    var(--color-primary-2)
+  );
+  box-shadow: -1rem -1rem 2rem var(--color-primary-1),
+    1rem 1rem 2rem var(--color-primary-2);
 }
 
 .mode:not(:last-child) {
@@ -15,7 +19,7 @@
   cursor: pointer;
   display: block;
   font-size: 1.4rem;
-  color: rgba(215, 224, 255, 0.4);
+  color: var(--light-purple);
   padding: 1rem 2rem;
   border-radius: 10rem;
   font-weight: 700;
@@ -23,5 +27,5 @@
 
 .mode__input:checked + .mode__label {
   background-color: var(--accent-color);
-  color: rgb(22, 25, 50);
+  color: var(--color-primary-2);
 }

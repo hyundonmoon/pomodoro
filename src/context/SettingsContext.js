@@ -95,8 +95,6 @@ export const SettingsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { addToast } = useToast();
 
-  console.log(state);
-
   useEffect(() => {
     if (state.paused && state.intervalId) {
       dispatch({ type: 'CLEAR_INTERVAL' });

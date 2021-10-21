@@ -22,7 +22,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 2.4rem;
-  border-bottom: 1px solid #e3e1e1;
+  border-bottom: 1px solid var(--light-gray);
 }
 
 .modal__heading {
@@ -48,7 +48,7 @@
 }
 
 .body__section:not(:last-child) {
-  border-bottom: 1px solid #e3e1e1;
+  border-bottom: 1px solid var(--light-gray);
 }
 
 .section__title {
@@ -76,13 +76,13 @@
 .option__label {
   font-weight: 700;
   font-size: 1.3rem;
-  color: rgba(30, 33, 63, 0.4);
+  color: var(--dark-gray);
 }
 
 .option__input {
   border: none;
   border-radius: 1rem;
-  background-color: #eff1fa;
+  background-color: var(--light-purple);
   padding: 1rem 0.5rem 1rem 1.5rem;
   font-weight: 700;
   width: 100%;
@@ -93,7 +93,7 @@
   font-size: 1.5rem;
   font-weight: 700;
   border-radius: 10rem;
-  background-color: var(--timer-bg);
+  background-color: var(--color-primary-1);
   color: #fff;
   padding: 1rem 2rem;
   margin-top: 2rem;

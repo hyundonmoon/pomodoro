@@ -11,12 +11,12 @@
 
 .progress-bar__path {
   stroke-width: 6;
-  stroke: #0e112a;
+  stroke: var(--dark-purple);
 }
 
 .progress-bar__bar {
   stroke: var(--accent-color);
   stroke-width: 6;
   stroke-linecap: round;
-  fill: rgba(14, 17, 42, 0.8);
+  fill: var(--dark-purple);
 }

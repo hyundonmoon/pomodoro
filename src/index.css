@@ -1,10 +1,12 @@
 :root {
   --body-bg: rgb(30, 33, 63);
-  --timer-bg: rgb(22, 25, 50);
-  --navy: rgb(81, 84, 111);
-  --text: rgb(215, 224, 255);
-  --muted-text: rgba(215, 224, 255, 0.7);
-  --accent-color: #70f3f8;
+  --accent-color: rgb(112, 243, 248);
+  --color-primary-1: rgb(39, 44, 90);
+  --color-primary-2: rgb(18, 21, 48);
+  --dark-purple: rgb(14, 17, 42);
+  --light-purple: rgb(239, 241, 250);
+  --dark-gray: rgba(30, 33, 63, 0.4);
+  --light-gray: rgb(227, 225, 225);
 }
 
 *,
@@ -28,7 +30,7 @@ html {
 
 @media (max-width: 350px) {
   html {
-    font-size: 45%;
+    font-size: 47%;
   }
 }
 
@@ -36,7 +38,7 @@ body {
   height: 100vh;
   width: 100vw;
   font-family: 'Kumbh Sans', sans-serif;
-  transition: all 500ms ease-in;
+  /* transition: all 500ms ease-in; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--body-bg);
