@@ -13,15 +13,14 @@
   background: linear-gradient(315deg, #2e325a, #0e112a);
   box-shadow: -1rem -1rem 2rem #272c5a, 1rem 1rem 2rem #121530;
   border-radius: 50%;
-
   width: 35rem;
   height: 35rem;
-
   cursor: pointer;
 }
 
 .timer:active {
   transform: scale(0.98);
+  box-shadow: -0.5rem -0.5rem 1rem #272c5a, 0.5rem 0.5rem 1rem #121530;
 }
 
 .timer__contents {
@@ -31,6 +30,7 @@
   left: 50%;
   transform: translate(-50%, -50%);
   color: #d7e0ff;
+  user-select: none;
 }
 
 .timer__time {
@@ -46,25 +46,21 @@
 
 .buttons {
   display: flex;
+  flex-wrap: wrap;
   flex-direction: row;
   align-items: center;
   gap: 2rem;
 }
 
 .button {
-  width: 18rem;
-  padding: 1.5rem 5rem;
+  padding: 2rem;
   border: none;
-  color: #d7e0ff;
-  border-radius: 0.5rem;
-  font-size: 1.5rem;
-  font-weight: 900;
+  color: var(--accent-color);
+  border-radius: 50%;
+  font-size: 3.6rem;
   letter-spacing: 0.25rem;
-  text-transform: uppercase;
-  text-align: center;
-  outline: none;
-  box-shadow: -0.6rem -0.6rem 1.2rem rgba(83, 85, 110, 0.5),
-    0.6rem 0.6rem 1.2rem rgba(0, 0, 0, 0.5);
+  box-shadow: -0.4rem -0.4rem 1rem rgba(83, 85, 110, 0.5),
+    0.4rem 0.4rem 1rem rgba(0, 0, 0, 0.5);
   transition: all 100ms ease-out;
 }
 

@@ -1,33 +1,27 @@
 import useSettings from '../../hook/useSettings';
+import { constants } from '../../utils/constants';
 
 import './ModeControl.css';
 
 const ModeControl = () => {
-  const {
-    pomodoroMinutes,
-    shortBreakMinutes,
-    longBreakMinutes,
-    setSelectedMode,
-    setPaused,
-    setElapsedSeconds,
-  } = useSettings();
+  const { state, dispatch } = useSettings();
+  const { POMODORO, SHORT, LONG } = constants;
 
   const handleModeChange = (e) => {
-    setPaused(true);
-    setElapsedSeconds(0);
-    setSelectedMode(e.target.id);
+    dispatch({ type: 'CHANGE_MODE', name: e.target.id });
   };
 
   return (
-    <form onChange={handleModeChange} className='modes'>
+    <form className='modes'>
       <div className='mode'>
         <input
           type='radio'
           id='pomodoro'
-          value={pomodoroMinutes}
+          value={state.modes[POMODORO]}
           name='mode'
           className='mode__input hidden'
-          defaultChecked
+          checked={state.selectedMode.name === POMODORO}
+          onChange={handleModeChange}
         />
         <label htmlFor='pomodoro' className='mode__label'>
           pomodoro
@@ -37,9 +31,11 @@ const ModeControl = () => {
         <input
           type='radio'
           id='short'
-          value={shortBreakMinutes}
+          value={state.modes[SHORT]}
           name='mode'
           className='mode__input hidden'
+          checked={state.selectedMode.name === SHORT}
+          onChange={handleModeChange}
         />
         <label htmlFor='short' className='mode__label'>
           short break
@@ -49,9 +45,11 @@ const ModeControl = () => {
         <input
           type='radio'
           id='long'
-          value={longBreakMinutes}
+          value={state.modes[LONG]}
           name='mode'
           className='mode__input hidden'
+          checked={state.selectedMode.name === LONG}
+          onChange={handleModeChange}
         />
         <label htmlFor='long' className='mode__label'>
           long break

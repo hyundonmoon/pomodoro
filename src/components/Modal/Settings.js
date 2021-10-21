@@ -1,30 +1,30 @@
 import { useRef, useCallback, useEffect } from 'react';
-import './Modal.css';
 import useSettings from '../../hook/useSettings';
+import { constants } from '../../utils/constants';
+
+import './Modal.css';
 
 const Settings = ({ settingOpen, setSettingOpen }) => {
   const settingsRef = useRef(null);
+  const { state, dispatch } = useSettings();
+
   const {
-    pomodoroMinutes,
-    shortBreakMinutes,
-    longBreakMinutes,
-    setPomodoroMinutes,
-    setShortBreakMinutes,
-    setLongBreakMinutes,
-    setPaused,
-    setElapsedSeconds,
-    reset,
-  } = useSettings();
+    modes: { pomodoro, short, long },
+  } = state;
+  const { POMODORO, SHORT, LONG } = constants;
 
   const handleInputChange = useCallback(
-    (fn) => {
+    (name) => {
       return (e) => {
-        setPaused(true);
-        setElapsedSeconds(0);
-        fn(e.target.value);
+        console.log(e.target.value);
+        return dispatch({
+          type: 'CHANGE_TIME',
+          name,
+          length: parseInt(e.target.value),
+        });
       };
     },
-    [setPaused, setElapsedSeconds]
+    [dispatch]
   );
 
   const closeSetting = () => {
@@ -32,7 +32,7 @@ const Settings = ({ settingOpen, setSettingOpen }) => {
   };
 
   const resetSetting = () => {
-    reset();
+    dispatch({ type: 'RESET_SETTINGS' });
     closeSetting();
   };
 
@@ -73,30 +73,27 @@ const Settings = ({ settingOpen, setSettingOpen }) => {
               <p className='option__label'>pomodoro</p>
               <input
                 type='number'
-                min='15'
                 className='option__input'
-                value={pomodoroMinutes}
-                onChange={handleInputChange(setPomodoroMinutes)}
+                value={pomodoro}
+                onChange={handleInputChange(POMODORO)}
               />
             </div>
             <div className='section__option'>
               <p className='option__label'>short break</p>
               <input
                 type='number'
-                min='15'
                 className='option__input'
-                value={shortBreakMinutes}
-                onChange={handleInputChange(setShortBreakMinutes)}
+                value={short}
+                onChange={handleInputChange(SHORT)}
               />
             </div>
             <div className='section__option'>
               <p className='option__label'>long break</p>
               <input
                 type='number'
-                min='15'
                 className='option__input'
-                value={longBreakMinutes}
-                onChange={handleInputChange(setLongBreakMinutes)}
+                value={long}
+                onChange={handleInputChange(LONG)}
               />
             </div>
             <button className='option__reset' onClick={resetSetting}>
