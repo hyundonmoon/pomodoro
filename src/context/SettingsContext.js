@@ -1,10 +1,25 @@
 import { useEffect, useReducer, createContext } from 'react';
 import useToast from '../hook/useToast';
-import { constants } from '../utils/constants';
+import {
+  constants,
+  reducerConstants,
+  toastConstants,
+} from '../utils/constants';
 
 export const SettingsContext = createContext({});
 
 const { POMODORO, SHORT, LONG, TITLE } = constants;
+const {
+  CHANGE_MODE,
+  CHANGE_TIME,
+  RESET_SETTINGS,
+  RESET_TIMER,
+  TOGGLE_TIMER,
+  TICK,
+  SET_INTERVAL,
+  CLEAR_INTERVAL,
+} = reducerConstants;
+const { POMODORO_OVER_MSG, BREAK_OVER_MSG } = toastConstants;
 
 const initialState = {
   selectedMode: { name: POMODORO, length: 25 },
@@ -20,7 +35,7 @@ const initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case 'CHANGE_MODE':
+    case CHANGE_MODE:
       return {
         ...state,
         selectedMode: {
@@ -30,7 +45,7 @@ const reducer = (state, action) => {
         paused: true,
         elapsedSeconds: 0,
       };
-    case 'CHANGE_TIME':
+    case CHANGE_TIME:
       return {
         ...state,
         selectedMode: { name: action.name, length: action.length },
@@ -41,46 +56,30 @@ const reducer = (state, action) => {
         paused: true,
         elapsedSeconds: 0,
       };
-    case 'RESET_SETTINGS':
+    case RESET_SETTINGS:
       return initialState;
-    case 'RESET_TIMER':
+    case RESET_TIMER:
       return {
         ...state,
         paused: true,
         elapsedSeconds: 0,
       };
-    case 'START':
-      return {
-        ...state,
-        paused: false,
-      };
-    case 'PAUSE':
-      return {
-        ...state,
-        paused: true,
-      };
-    case 'TOGGLE':
+    case TOGGLE_TIMER:
       return {
         ...state,
         paused: !state.paused,
       };
-    case 'TICK':
+    case TICK:
       return {
         ...state,
         elapsedSeconds: state.elapsedSeconds + 1,
       };
-    case 'REWIND':
-      return {
-        ...state,
-        paused: true,
-        elapsedSeconds: 0,
-      };
-    case 'SET_INTERVAL':
+    case SET_INTERVAL:
       return {
         ...state,
         intervalId: action.id,
       };
-    case 'CLEAR_INTERVAL':
+    case CLEAR_INTERVAL:
       clearInterval(state.intervalId);
       return {
         ...state,
@@ -97,16 +96,16 @@ export const SettingsProvider = ({ children }) => {
 
   useEffect(() => {
     if (state.paused && state.intervalId) {
-      dispatch({ type: 'CLEAR_INTERVAL' });
+      dispatch({ type: CLEAR_INTERVAL });
       document.title = TITLE;
     } else if (state.elapsedSeconds > state.selectedMode.length * 60) {
-      if (state.selectedMode.name === 'pomodoro') {
-        addToast('Take a break!');
+      if (state.selectedMode.name === POMODORO) {
+        addToast(POMODORO_OVER_MSG);
       } else {
-        addToast('Get back to work!');
+        addToast(BREAK_OVER_MSG);
       }
-      dispatch({ type: 'REWIND' });
-      document.title = 'Pomodoro Timer';
+      dispatch({ type: RESET_TIMER });
+      document.title = TITLE;
     }
 
     if (!state.paused && state.intervalId) {

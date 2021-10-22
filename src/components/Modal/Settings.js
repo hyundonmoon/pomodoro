@@ -1,8 +1,11 @@
 import { useRef, useCallback, useEffect } from 'react';
 import useSettings from '../../hook/useSettings';
-import { constants } from '../../utils/constants';
+import { constants, reducerConstants } from '../../utils/constants';
 
 import './Modal.css';
+
+const { POMODORO, SHORT, LONG } = constants;
+const { CHANGE_TIME, RESET_SETTINGS } = reducerConstants;
 
 const Settings = ({ settingOpen, setSettingOpen }) => {
   const settingsRef = useRef(null);
@@ -11,14 +14,12 @@ const Settings = ({ settingOpen, setSettingOpen }) => {
   const {
     modes: { pomodoro, short, long },
   } = state;
-  const { POMODORO, SHORT, LONG } = constants;
 
   const handleInputChange = useCallback(
     (name) => {
       return (e) => {
-        console.log(e.target.value);
         return dispatch({
-          type: 'CHANGE_TIME',
+          type: CHANGE_TIME,
           name,
           length: parseInt(e.target.value),
         });
@@ -32,7 +33,7 @@ const Settings = ({ settingOpen, setSettingOpen }) => {
   };
 
   const resetSetting = () => {
-    dispatch({ type: 'RESET_SETTINGS' });
+    dispatch({ type: RESET_SETTINGS });
     closeSetting();
   };
 

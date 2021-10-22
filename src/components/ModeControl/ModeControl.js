@@ -1,14 +1,15 @@
 import useSettings from '../../hook/useSettings';
-import { constants } from '../../utils/constants';
+import { constants, reducerConstants } from '../../utils/constants';
 
 import './ModeControl.css';
+const { POMODORO, SHORT, LONG } = constants;
+const { CHANGE_MODE } = reducerConstants;
 
 const ModeControl = () => {
   const { state, dispatch } = useSettings();
-  const { POMODORO, SHORT, LONG } = constants;
 
   const handleModeChange = (e) => {
-    dispatch({ type: 'CHANGE_MODE', name: e.target.id });
+    dispatch({ type: CHANGE_MODE, name: e.target.id });
   };
 
   return (
