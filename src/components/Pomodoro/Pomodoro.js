@@ -1,15 +1,14 @@
 import { useEffect, useCallback } from 'react';
-import useSettings from '../../hook/useSettings';
-import ProgressBar from '../ProgressBar/ProgressBar';
-import ModeControl from '../ModeControl/ModeControl';
+import useSettings from 'hook/useSettings';
+import ProgressBar from 'components/ProgressBar/ProgressBar';
+import ModeControl from 'components/ModeControl/ModeControl';
 import {
   AiOutlineSetting,
   AiOutlineQuestion,
   AiOutlineUndo,
 } from 'react-icons/ai';
-
+import { reducerConstants } from 'utils/constants';
 import './Pomodoro.css';
-import { reducerConstants } from '../../utils/constants';
 
 const { TOGGLE_TIMER, RESET_TIMER, SET_INTERVAL, TICK } = reducerConstants;
 

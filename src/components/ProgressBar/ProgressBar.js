@@ -1,14 +1,13 @@
 import { useState, useEffect } from 'react';
-import useSettings from '../../hook/useSettings';
-import { constants } from '../../utils/constants';
-
+import useSettings from 'hook/useSettings';
+import { constants } from 'utils/constants';
 import './ProgressBar.css';
 
 const ProgressBar = () => {
   const [offsetAmount, setOffsetAmount] = useState(0);
   const { state } = useSettings();
-
   const { RADIUS, CIRCUMFERENCE } = constants;
+
   const targetSeconds = state.selectedMode.length * 60;
   const elapsedSeconds = state.elapsedSeconds;
 

@@ -1,12 +1,12 @@
 import { useState } from 'react';
 
-import Pomodoro from './components/Pomodoro/Pomodoro';
-import Portal from './components/Portal';
-import Settings from './components/Modal/Settings';
-import About from './components/Modal/About';
+import Pomodoro from 'components/Pomodoro/Pomodoro';
+import Portal from 'components/Portal';
+import Settings from 'components/Modal/Settings';
+import About from 'components/Modal/About';
 
-import { SettingsProvider } from './context/SettingsContext';
-import { ToastProvider } from './context/ToastContext';
+import { SettingsProvider } from 'context/SettingsContext';
+import { ToastProvider } from 'context/ToastContext';
 
 const App = () => {
   const [settingOpen, setSettingOpen] = useState(false);

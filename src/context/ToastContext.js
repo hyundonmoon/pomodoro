@@ -1,6 +1,6 @@
 import { useState, useCallback, createContext } from 'react';
-import Portal from '../components/Portal';
-import Toast from '../components/Toast/Toast';
+import Portal from 'components/Portal';
+import Toast from 'components/Toast/Toast';
 
 let id = 0;
 

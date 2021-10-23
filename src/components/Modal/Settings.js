@@ -1,6 +1,6 @@
 import { useRef, useCallback, useEffect } from 'react';
-import useSettings from '../../hook/useSettings';
-import { constants, reducerConstants } from '../../utils/constants';
+import useSettings from 'hook/useSettings';
+import { constants, reducerConstants } from 'utils/constants';
 
 import './Modal.css';
 

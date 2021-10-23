@@ -1,10 +1,6 @@
 import { useEffect, useReducer, createContext } from 'react';
-import useToast from '../hook/useToast';
-import {
-  constants,
-  reducerConstants,
-  toastConstants,
-} from '../utils/constants';
+import useToast from 'hook/useToast';
+import { constants, reducerConstants, toastConstants } from 'utils/constants';
 
 export const SettingsContext = createContext({});
 

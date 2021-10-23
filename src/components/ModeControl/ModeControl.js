@@ -1,5 +1,5 @@
-import useSettings from '../../hook/useSettings';
-import { constants, reducerConstants } from '../../utils/constants';
+import useSettings from 'hook/useSettings';
+import { constants, reducerConstants } from 'utils/constants';
 
 import './ModeControl.css';
 const { POMODORO, SHORT, LONG } = constants;

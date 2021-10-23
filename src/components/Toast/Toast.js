@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import useToast from '../../hook/useToast';
+import useToast from 'hook/useToast';
 
 import './Toast.css';
 
