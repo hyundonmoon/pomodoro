@@ -1,6 +1,8 @@
 import { useEffect, useReducer, createContext } from 'react';
+import useSound from 'use-sound';
 import useToast from 'hook/useToast';
 import { constants, reducerConstants, toastConstants } from 'utils/constants';
+import alarm from 'sounds/alarm.mp3';
 
 export const SettingsContext = createContext({});
 
@@ -14,6 +16,7 @@ const {
   TICK,
   SET_INTERVAL,
   CLEAR_INTERVAL,
+  TOGGLE_VOLUME,
 } = reducerConstants;
 const { POMODORO_OVER_MSG, BREAK_OVER_MSG } = toastConstants;
 
@@ -27,6 +30,7 @@ const initialState = {
   elapsedSeconds: 0,
   paused: true,
   intervalId: null,
+  soundOn: true,
 };
 
 const reducer = (state, action) => {
@@ -81,6 +85,11 @@ const reducer = (state, action) => {
         ...state,
         intervalId: null,
       };
+    case TOGGLE_VOLUME:
+      return {
+        ...state,
+        soundOn: !state.soundOn,
+      };
     default:
       return state;
   }
@@ -89,6 +98,7 @@ const reducer = (state, action) => {
 export const SettingsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { addToast } = useToast();
+  const [play] = useSound(alarm);
 
   useEffect(() => {
     if (state.paused && state.intervalId) {
@@ -100,6 +110,11 @@ export const SettingsProvider = ({ children }) => {
       } else {
         addToast(BREAK_OVER_MSG);
       }
+
+      if (state.soundOn) {
+        play();
+      }
+
       dispatch({ type: RESET_TIMER });
       document.title = TITLE;
     }
@@ -117,6 +132,8 @@ export const SettingsProvider = ({ children }) => {
     state.elapsedSeconds,
     state.paused,
     state.intervalId,
+    state.soundOn,
+    play,
   ]);
 
   return (

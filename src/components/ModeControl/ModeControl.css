@@ -9,6 +9,7 @@
   );
   box-shadow: -1rem -1rem 2rem var(--color-primary-1),
     1rem 1rem 2rem var(--color-primary-2);
+  user-select: none;
 }
 
 .mode:not(:last-child) {

@@ -1,14 +1,20 @@
+import useSound from 'use-sound';
 import useSettings from 'hook/useSettings';
 import { constants, reducerConstants } from 'utils/constants';
-
 import './ModeControl.css';
+import modeChangeSound from 'sounds/mode.mp3';
+
 const { POMODORO, SHORT, LONG } = constants;
 const { CHANGE_MODE } = reducerConstants;
 
 const ModeControl = () => {
   const { state, dispatch } = useSettings();
+  const [play] = useSound(modeChangeSound);
 
   const handleModeChange = (e) => {
+    if (state.soundOn) {
+      play();
+    }
     dispatch({ type: CHANGE_MODE, name: e.target.id });
   };
 

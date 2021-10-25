@@ -13,6 +13,7 @@ const TOGGLE_TIMER = 'TOGGLE_TIMER';
 const TICK = 'TICK';
 const SET_INTERVAL = 'SET_INTERVAL';
 const CLEAR_INTERVAL = 'CLEAR_INTERVAL';
+const TOGGLE_VOLUME = 'TOGGLE_VOLUME';
 
 const POMODORO_OVER_MSG = 'Take a break!';
 const BREAK_OVER_MSG = 'Get back to work!';
@@ -35,6 +36,7 @@ export const reducerConstants = {
   TICK,
   SET_INTERVAL,
   CLEAR_INTERVAL,
+  TOGGLE_VOLUME,
 };
 
 export const toastConstants = { POMODORO_OVER_MSG, BREAK_OVER_MSG };
