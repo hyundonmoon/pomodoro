@@ -59,6 +59,8 @@ Finally, I started using constant variables instead of hard coding string values
 
 Overall, I'm pretty happy with how everything turned out. I especially like the fact that my friends are actually using it, unlike some of my other projects which, realistically speaking, no one will ever use.
 
-### Useful resource
+### Useful resources
 
+- [Frontend Mentor](https://www.frontendmentor.io/challenges/pomodoro-app-KBFnycJ6G) - I got the design for this app from Frontend Mentor. Frontend Mentor is a great place to find challenges that will improve your overall web development skills.
 - [CSS Tricks](https://css-tricks.com/building-progress-ring-quickly/) - This helped me create the progress bar for the timer.
+- [Zapsplat](https://www.zapsplat.com/) - Great place to find free sound effects.
