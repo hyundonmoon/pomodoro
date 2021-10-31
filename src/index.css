@@ -7,6 +7,7 @@
   --light-purple: rgb(239, 241, 250);
   --dark-gray: rgba(30, 33, 63, 0.4);
   --light-gray: rgb(227, 225, 225);
+  --alert: #da0000;
 }
 
 *,
@@ -67,6 +68,10 @@ button {
 
 .hidden {
   display: none;
+}
+
+.flex {
+  display: flex;
 }
 
 /* toast related */

@@ -88,13 +88,22 @@
   width: 100%;
 }
 
-.option__reset {
+.option__button {
   margin: 0 auto;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   border-radius: 10rem;
-  background-color: var(--color-primary-1);
   color: #fff;
-  padding: 1rem 2rem;
-  margin-top: 2rem;
+  padding: 1rem 3rem;
+  margin-top: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.option__button-save {
+  background-color: var(--body-bg);
+}
+
+.option__button-reset {
+  background-color: var(--alert);
 }

@@ -48,11 +48,8 @@ const reducer = (state, action) => {
     case CHANGE_TIME:
       return {
         ...state,
-        selectedMode: { name: action.name, length: action.length },
-        modes: {
-          ...state.modes,
-          [action.name]: action.length,
-        },
+        selectedMode: { name: POMODORO, length: action.updatedTime[POMODORO] },
+        modes: action.updatedTime,
         paused: true,
         elapsedSeconds: 0,
       };
@@ -99,6 +96,8 @@ export const SettingsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
   const { addToast } = useToast();
   const [play] = useSound(alarm);
+
+  console.log(state);
 
   useEffect(() => {
     if (state.paused && state.intervalId) {

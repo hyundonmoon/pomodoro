@@ -1,5 +1,6 @@
-import { useRef, useCallback, useEffect } from 'react';
+import { useState, useRef, useCallback, useEffect } from 'react';
 import useSettings from 'hook/useSettings';
+import useToast from 'hook/useToast';
 import { constants, reducerConstants } from 'utils/constants';
 
 import './Modal.css';
@@ -10,23 +11,29 @@ const { CHANGE_TIME, RESET_SETTINGS } = reducerConstants;
 const Settings = ({ settingOpen, setSettingOpen }) => {
   const settingsRef = useRef(null);
   const { state, dispatch } = useSettings();
+  const { addToast } = useToast();
+  const [pomodoroLength, setPomodoroLength] = useState(state.modes.pomodoro);
+  const [shortLength, setShortLength] = useState(state.modes.short);
+  const [longLength, setLongLength] = useState(state.modes.long);
 
-  const {
-    modes: { pomodoro, short, long },
-  } = state;
+  const handleSettingUpdate = () => {
+    dispatch({
+      type: CHANGE_TIME,
+      updatedTime: {
+        [POMODORO]: pomodoroLength,
+        [SHORT]: shortLength,
+        [LONG]: longLength,
+      },
+    });
+    addToast(`SAVED`);
+    closeSetting();
+  };
 
-  const handleInputChange = useCallback(
-    (name) => {
-      return (e) => {
-        return dispatch({
-          type: CHANGE_TIME,
-          name,
-          length: parseInt(e.target.value),
-        });
-      };
-    },
-    [dispatch]
-  );
+  const handleChange = (fn) => {
+    return (e) => {
+      fn(parseInt(e.target.value));
+    };
+  };
 
   const closeSetting = () => {
     setSettingOpen(false);
@@ -34,6 +41,7 @@ const Settings = ({ settingOpen, setSettingOpen }) => {
 
   const resetSetting = () => {
     dispatch({ type: RESET_SETTINGS });
+    addToast(`RESET`);
     closeSetting();
   };
 
@@ -75,8 +83,8 @@ const Settings = ({ settingOpen, setSettingOpen }) => {
               <input
                 type='number'
                 className='option__input'
-                value={pomodoro}
-                onChange={handleInputChange(POMODORO)}
+                value={pomodoroLength}
+                onChange={handleChange(setPomodoroLength)}
               />
             </div>
             <div className='section__option'>
@@ -84,8 +92,8 @@ const Settings = ({ settingOpen, setSettingOpen }) => {
               <input
                 type='number'
                 className='option__input'
-                value={short}
-                onChange={handleInputChange(SHORT)}
+                value={shortLength}
+                onChange={handleChange(setShortLength)}
               />
             </div>
             <div className='section__option'>
@@ -93,13 +101,24 @@ const Settings = ({ settingOpen, setSettingOpen }) => {
               <input
                 type='number'
                 className='option__input'
-                value={long}
-                onChange={handleInputChange(LONG)}
+                value={longLength}
+                onChange={handleChange(setLongLength)}
               />
             </div>
-            <button className='option__reset' onClick={resetSetting}>
-              reset
-            </button>
+            <div className='flex'>
+              <button
+                className='option__button option__button-save'
+                onClick={handleSettingUpdate}
+              >
+                save
+              </button>
+              <button
+                className='option__button option__button-reset'
+                onClick={resetSetting}
+              >
+                reset
+              </button>
+            </div>
           </div>
         </div>
       </div>
